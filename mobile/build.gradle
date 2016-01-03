@@ -1,21 +1,69 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.jakewharton.hugo'
+//apply plugin: 'io.fabric'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion 23
   buildToolsVersion "23.0.2"
 
   defaultConfig {
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     applicationId "com.eightmins.eightminutes"
-    minSdkVersion 21
-    targetSdkVersion 23
-    versionCode 1
-    versionName "1.0"
+    multiDexEnabled true
+    targetSdkVersion Integer.parseInt(project.TARGET_SDK_VERSION)
+    versionCode Integer.parseInt(project.VERSION_CODE)
+    versionName project.VERSION_CODE
+    minSdkVersion Integer.parseInt(project.MIN_SDK_VERSION)
+    maxSdkVersion Integer.parseInt(project.TARGET_SDK_VERSION)
+
+    renderscriptTargetApi 23
+    renderscriptSupportModeEnabled true
+
+    buildConfigField "String", "PARSE_APP_ID", "\"WUHyirx5U73etKmHApaglKUkqaxpMtTgvvqoVh0c\""
+    buildConfigField "String", "PARSE_API_KEY", "\"YzkWXpZaTrgmyNJ37A2oZ7MzojEgSisiBggtqMxl\""
+    buildConfigField "String", "TWITTER_KEY", "\"BAEJBTDRh1dFQYejH8Rpc2Ws9\""
+    buildConfigField "String", "TWITTER_SECRET", "\"z3Sc3ZZgPlWsTi1kk5mql3dyzwppoYyQXT8k41ufsCiqVbxoln\""
+    buildConfigField "String", "GCM_SERVER_API_KEY", "\"AIzaSyBufChFr9zBLFShSrtj5h3E5DQ3q-Mq7_M\""
+    buildConfigField "String", "GCM_SERVER_ID", "\"270999624614\""
   }
   buildTypes {
     release {
-      minifyEnabled false
+      minifyEnabled true
+      shrinkResources true
+//      hugo { enabled false }
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+
+    debug {
+      minifyEnabled false
+      applicationIdSuffix '.debug'
+    }
+  }
+
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+
+  lintOptions {
+    disable 'InvalidPackage'
+  }
+
+  dexOptions {
+    javaMaxHeapSize "4g"
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+  }
+
+  packagingOptions {
+    exclude 'META-INF/services/javax.annotation.processing.Processor'  // butterknife
   }
 }
 
@@ -23,9 +71,44 @@ dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   wearApp project(':wear')
   testCompile 'junit:junit:4.12'
+  testCompile 'org.robolectric:robolectric:3.0'
   compile 'com.android.support:appcompat-v7:23.1.1'
   compile 'com.google.android.gms:play-services:8.4.0'
   compile 'com.android.support:design:23.1.1'
   compile 'com.android.support:support-v4:23.1.1'
   compile 'com.android.support:support-v13:23.1.1'
+
+  compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-4584'
+  compile 'com.google.code.gson:gson:2.4'
+  compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+  compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+  compile 'com.squareup.okhttp:okhttp:2.7.0'
+  compile 'io.reactivex:rxjava:1.0.16'
+  compile 'io.reactivex:rxandroid:1.0.1'
+  compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta1'
+  compile 'com.squareup.picasso:picasso:2.5.2'
+  compile 'com.jakewharton:butterknife:7.0.1'
+  compile "org.parceler:parceler-api:1.0.4"
+
+  apt "org.parceler:parceler:1.0.4"
+  compile 'frankiesardo:icepick:3.1.1-SNAPSHOT'
+  provided 'frankiesardo:icepick-processor:3.1.1-SNAPSHOT'
+  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+  compile 'com.google.dagger:dagger:2.0'
+  provided 'com.google.dagger:dagger-compiler:2.0'
+  provided 'org.glassfish:javax.annotation:10.0-b28'
+  compile 'io.reactivex:rxandroid:1.1.0'
+  compile 'io.reactivex:rxjava:1.1.0'
+  compile 'com.squareup:otto:1.3.8'
+
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2') {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  }
+  androidTestCompile('com.android.support.test:runner:0.3') {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  }
+
+  apt "org.androidannotations:androidannotations:3.3.2"
+  compile "org.androidannotations:androidannotations-api:3.3.2"
 }
