@@ -388,18 +388,6 @@ public class PlaybackOverlayFragment extends android.support.v17.leanback.app.Pl
     return (int) duration;
   }
 
-  private void prev() {
-    if (--mCurrentItem < 0) {
-      mCurrentItem = mItems.size() - 1;
-    }
-    if (mPlayPauseAction.getIndex() == PlayPauseAction.PLAY) {
-      mCallback.onFragmentPlayPause(mItems.get(mCurrentItem), 0, false);
-    } else {
-      mCallback.onFragmentPlayPause(mItems.get(mCurrentItem), 0, true);
-    }
-    updatePlaybackRow(mCurrentItem);
-  }
-
   // Container Activity must implement this interface
   public interface OnPlayPauseClickedListener {
     void onFragmentPlayPause(Movie movie, int position, Boolean playPause);
