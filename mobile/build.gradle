@@ -24,8 +24,8 @@ android {
     renderscriptTargetApi 23
     renderscriptSupportModeEnabled true
 
-    buildConfigField "String", "PARSE_APP_ID", "\"WUHyirx5U73etKmHApaglKUkqaxpMtTgvvqoVh0c\""
-    buildConfigField "String", "PARSE_API_KEY", "\"YzkWXpZaTrgmyNJ37A2oZ7MzojEgSisiBggtqMxl\""
+    buildConfigField "String", "PARSE_APP_ID", "\"dJDm7ykUrDyWwRxvRuwxPVwM4Wf9aMr3mugB2Sey\""
+    buildConfigField "String", "PARSE_API_KEY", "\"c9VA3tjWCkUVwDnEdfS35N1FmJ8DLmY20C69L9Ud\""
     buildConfigField "String", "TWITTER_KEY", "\"BAEJBTDRh1dFQYejH8Rpc2Ws9\""
     buildConfigField "String", "TWITTER_SECRET", "\"z3Sc3ZZgPlWsTi1kk5mql3dyzwppoYyQXT8k41ufsCiqVbxoln\""
     buildConfigField "String", "GCM_SERVER_API_KEY", "\"AIzaSyBufChFr9zBLFShSrtj5h3E5DQ3q-Mq7_M\""
@@ -88,8 +88,14 @@ dependencies {
   compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta1'
   compile 'com.squareup.picasso:picasso:2.5.2'
   compile 'com.jakewharton:butterknife:7.0.1'
+  kapt 'com.jakewharton:butterknife:7.0.1'
+  compile 'com.parse:parseui-login-android:0.0.1'
+  compile 'com.parse:parseui-widget-android:0.0.1'
+  compile 'com.parse:parse-android:1.12.0'
+  compile 'com.facebook.android:facebook-android-sdk:4.6.0'
+  compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
+  compile 'com.parse:parsetwitterutils-android:1.10.3'
   compile "org.parceler:parceler-api:1.0.4"
-
   apt "org.parceler:parceler:1.0.4"
   compile 'frankiesardo:icepick:3.1.1-SNAPSHOT'
   provided 'frankiesardo:icepick-processor:3.1.1-SNAPSHOT'
