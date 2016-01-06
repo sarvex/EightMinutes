@@ -9,23 +9,19 @@ import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.widget.EditText
-
-import com.eightmins.eightminutes.MainActivity
-import com.eightmins.eightminutes.R
-import com.parse.ParseException
-import com.parse.ParseUser
-import com.parse.SignUpCallback
-
 import butterknife.Bind
 import butterknife.ButterKnife
 import butterknife.OnClick
-import butterknife.bindView
+import com.eightmins.eightminutes.MainActivity
+import com.eightmins.eightminutes.R
+import com.parse.ParseUser
 
 class SignupActivity : AppCompatActivity() {
 
   @Bind(R.id.username) lateinit var username: EditText
   @Bind(R.id.password) lateinit var password: EditText
   @Bind(R.id.email) lateinit var email: EditText
+  @Bind(R.id.phone) lateinit var phone: EditText
 
   override fun onCreate(savedInstanceState: Bundle?) {
     requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)
@@ -60,6 +56,7 @@ class SignupActivity : AppCompatActivity() {
     val username = this.username.text.toString().trim { it <= ' ' }
     val password = this.password.text.toString().trim { it <= ' ' }
     val email = this.email.text.toString().trim { it <= ' ' }
+    val phone = this.phone.text.toString().trim { it <= ' ' }
 
     if (username.isEmpty()) {
       AlertDialog.Builder(this).setTitle(R.string.error_title).setMessage(R.string.username_cannot_be_empty).setPositiveButton(android.R.string.ok, null).create().show()
@@ -67,6 +64,8 @@ class SignupActivity : AppCompatActivity() {
       AlertDialog.Builder(this).setTitle(R.string.error_title).setMessage(R.string.password_cannot_be_empty).setPositiveButton(android.R.string.ok, null).create().show()
     } else if (email.isEmpty()) {
       AlertDialog.Builder(this).setTitle(R.string.error_title).setMessage(R.string.email_cannot_be_empty).setPositiveButton(android.R.string.ok, null).create().show()
+    } else if (email.isEmpty()) {
+      AlertDialog.Builder(this).setTitle(R.string.error_title).setMessage(R.string.phone_cannot_be_empty).setPositiveButton(android.R.string.ok, null).create().show()
     } else {
       setProgressBarIndeterminate(true)
 
@@ -74,6 +73,7 @@ class SignupActivity : AppCompatActivity() {
       newUser.username = username
       newUser.setPassword(password)
       newUser.email = email
+      newUser.put("phone", phone)
       newUser.signUpInBackground { exception ->
         setProgressBarIndeterminate(false)
         if (exception == null) {

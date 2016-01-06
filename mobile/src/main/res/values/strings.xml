@@ -24,5 +24,7 @@
   <string name="username_cannot_be_empty">UserName cannot be Empty!</string>
   <string name="password_cannot_be_empty">Password cannot be Empty!</string>
   <string name="email_cannot_be_empty">EMail cannot be Empty!</string>
+  <string name="phone_cannot_be_empty">Phone Number cannot be Empty!</string>
   <string name="action_logout">Logout</string>
+  <string name="phone_hint">+919911223344</string>
 </resources>
