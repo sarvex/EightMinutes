@@ -87,7 +87,7 @@ dependencies {
   compile 'io.reactivex:rxandroid:1.1.0'
   compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta1'
   compile 'com.squareup.picasso:picasso:2.71828'
-  compile 'com.jakewharton:butterknife:7.0.1'
+  compile 'com.jakewharton:butterknife:10.2.3'
   compile 'com.parse:parseui-login-android:0.0.2'
   compile 'com.parse:parseui-widget-android:0.0.1'
   compile 'com.parse:parse-android:1.17.3'
