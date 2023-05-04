@@ -84,7 +84,7 @@ dependencies {
   compile 'com.squareup.retrofit:converter-gson:2.0.0-SNAPSHOT'
   compile 'com.squareup.okhttp:okhttp:2.7.5'
   compile 'io.reactivex:rxjava:1.3.8'
-  compile 'io.reactivex:rxandroid:1.1.0'
+  compile 'io.reactivex:rxandroid:1.2.1'
   compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-SNAPSHOT'
   compile 'com.squareup.picasso:picasso:2.71828'
   compile 'com.jakewharton:butterknife:10.2.3'
