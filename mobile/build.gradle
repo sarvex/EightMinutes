@@ -71,7 +71,7 @@ dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   wearApp project(':wear')
   testCompile 'junit:junit:4.13.2'
-  testCompile 'org.robolectric:robolectric:4.11'
+  testCompile 'org.robolectric:robolectric:4.11.1'
   compile 'com.android.support:appcompat-v7:23.1.1'
   compile 'com.google.android.gms:play-services:8.4.0'
   compile 'com.android.support:design:23.1.1'
